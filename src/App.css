@@ -39,7 +39,6 @@
 }
 
 #root{
-  background-color: rgba(251, 239, 238, 0.803);
   height:100vh;
 }
 
@@ -50,7 +49,9 @@ button {
 }
 .habits{
   margin-top: 0;
-  
+  height: 70vh;
+  overflow-y: auto;
+  background-color: rgba(251, 239, 238, 0.803);
 }
 .habit {
   font-size: 2.0rem;
@@ -140,7 +141,7 @@ button {
   outline:none;
 }
 
-.addHabit__button{
+.addHabit__button {
   width : 80px;
   height: 25px;
   border-radius: 15px;
@@ -152,7 +153,20 @@ button {
   transition: 0.2s;
 }
 
-.addHabit__button:hover{
+.addHabit__button:hover, .reset_button:hover{
   transform: scale(1.1);
   background-color: orangered;
+}
+
+.reset_button{
+  width : 100px;
+  height: 50px;
+  border-radius: 25px;
+  color: white;
+  margin-left: 50px;
+  background-color: rgb(252, 113, 122);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  
 }

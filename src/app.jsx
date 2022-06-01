@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import "./app.css";
 import AddHabit from './components/addHabit';
 import Habits from "./components/habits";
@@ -42,9 +42,10 @@ class App extends Component {
 
   resetAll = () => {
     this.setState({
-      navbar: 0,
-      input: undefined,
+      navbar: { totalCount: 0 },
+      addHabit: {newHabitName:""},
       habits: [],
+      lastId: 0
     });
   };
 
@@ -83,7 +84,7 @@ class App extends Component {
           onDecrease={this.handleDecrease}
           onDelete={this.handleDelete}
         ></Habits>
-        <button className="reset_btn" onClick={this.resetAll}></button>
+        <button className="reset_button" onClick={this.resetAll}>reset all</button>
       </>
     );
   }
