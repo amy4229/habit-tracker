@@ -7,7 +7,7 @@ class Habit extends Component {
     const {name , count} = this.props.habit;
     const {onIncrease, onDecrease , onDelete}= this.props;
     return (
-      <div className='habit'>
+      <li className='habit'>
         <span className="habit-name">{name}</span>
         <span className="habit-count">{count}</span>
         <button className="habit-button habit-increase" onClick={()=>onIncrease(this.props.habit)}>
@@ -19,7 +19,7 @@ class Habit extends Component {
         <button className="habit-button habit-delete" onClick={()=>onDelete(this.props.habit)}>
           <i className="fa-solid fa-trash "></i>
         </button>
-      </div>
+      </li>
     );
   }
 }
