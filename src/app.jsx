@@ -8,7 +8,6 @@ class App extends Component {
  
   state = {
     navbar: { totalCount: 0 },
-    addHabit: {newHabitName:""},
     habits: [
       { id: 1, name: "Reading", count: 0 },
       { id: 2, name: "Running", count: 0 },
@@ -43,28 +42,23 @@ class App extends Component {
   resetAll = () => {
     this.setState({
       navbar: { totalCount: 0 },
-      addHabit: {newHabitName:""},
       habits: [],
       lastId: 0
     });
   };
 
-  handleAddHabit = () => {
+  handleAddHabit = (new_habit_name) => {
     const habits = [...this.state.habits];
+    const newIndex =this.state.lastId+1
     const habit = {
-      id : ++this.state.lastId,
-      name : this.state.addHabit.newHabitName,
+      id : newIndex,
+      name : new_habit_name,
       count : 0
     }
     habits.push(habit);
-    this.setState({addHabit: {newHabitName:""},habits});
-    
+    this.setState({addHabit: {newHabitName:""},habits,lastId: newIndex});
   };
   
-  handleInputChange = (value) => {
-    this.setState({addHabit: {newHabitName: value}});
-  }
-
   _getTotalCount =(habits) =>{
     const total = habits.reduce((acc, current)=>acc+=current.count,0);
     return total;
@@ -77,7 +71,7 @@ class App extends Component {
     return (
       <>
         <Navbar totalCount={total_cnt}></Navbar>
-        <AddHabit addHabit={addHabit} onInputChange = {this.handleInputChange} onAddHabit={this.handleAddHabit}></AddHabit>
+        <AddHabit addHabit={addHabit} onAddHabit={this.handleAddHabit}></AddHabit>
         <Habits
           habits={habits}
           onIncrease={this.handleIncrease}
