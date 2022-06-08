@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-class Habit extends Component {
+class Habit extends PureComponent {
 
   render() {
-    
     const {name , count} = this.props.habit;
     const {onIncrease, onDecrease , onDelete}= this.props;
     return (

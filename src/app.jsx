@@ -17,20 +17,26 @@ class App extends Component {
   };
 
   handleIncrease = (habit) => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    habits[index].count++;
+    const habits = this.state.habits.map(item => {
+      if(item.id === habit.id) {
+        return {...habit, count: habit.count+1}
+      }
+      return item;
+    })
     const totalCount = this._getTotalCount(habits);
-    this.setState({ navbar:{totalCount}, habits });
+    this.setState({navbar:{totalCount},habits});
   };
 
   handleDecrease = (habit)  => {
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    let cnt = habits[index].count - 1;
-    habits[index].count = habits[index].count === 0 ? 0 : cnt;
+    const habits = this.state.habits.map(item => {
+      if(item.id === habit.id) {
+        const count = habit.count-1;
+        return {...habit, count: count > 0 ? count : 0}
+      }
+      return item;
+    })
     const totalCount = this._getTotalCount(habits);
-    this.setState({ navbar: {totalCount}, habits});
+    this.setState({navbar:{totalCount},habits});
   };
 
   handleDelete = (habit) => {
